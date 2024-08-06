@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary Scorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Summary Scorer</h1>
+        <form id="scorer-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="ppt">Upload PowerPoint:</label>
+                <input type="file" id="ppt" name="ppt" accept=".pptx" required>
+            </div>
+            <div class="form-group">
+                <label for="summary">Student Summary:</label>
+                <textarea id="summary" name="summary" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="summary_image">Or Upload Summary Image:</label>
+                <input type="file" id="summary_image" name="summary_image" accept=".png,.jpg,.jpeg">
+                <button type="button" id="extract-text-btn">Extract Text from Image</button>
+            </div>
+            <button type="submit">Score Summary</button>
+        </form>
+        <div id="extracted-text" class="hidden">
+            <h3>Extracted Text:</h3>
+            <p id="extracted-text-content"></p>
+        </div>
+        <div id="result" class="hidden">
+            <h2>Score: <span id="score"></span></h2>
+        </div>
+        <div id="loading" class="hidden">Processing...</div>
+        <div id="error" class="hidden"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
